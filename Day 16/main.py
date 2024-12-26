@@ -12,8 +12,8 @@ def coffee_simulator():
     moneyMachine = MoneyMachine()
 
     while making_coffee:
-        
-        choice = input("What would you like? (espresso/latte/cappuccino): \n").lower()
+        options = menu.get_items()
+        choice = input(f"What would you like? ({options}): \n").lower()
         
         if choice == "off":
             print("Machine is off ❌")
@@ -24,9 +24,8 @@ def coffee_simulator():
         else:
             ordered_drink = menu.find_drink(choice)
             price = ordered_drink.cost
-            if coffeeMaker.is_resource_sufficient(ordered_drink):
-                if moneyMachine.make_payment(price):
-                    coffeeMaker.make_coffee(ordered_drink)
+            if coffeeMaker.is_resource_sufficient(ordered_drink) and moneyMachine.make_payment(price):
+                coffeeMaker.make_coffee(ordered_drink)
                 
             
 coffee_simulator()            
