@@ -28,8 +28,8 @@ def show_machine_report(d_resources):
     d_coffee = d_resources["coffee"]
     d_milk = d_resources["milk"]
     print(f"Water 💧: {d_water}ml\n"
-          f"Milk 🥛: {d_coffee}g\n"
-          f"Coffee ☕: {d_milk}ml")
+          f"Milk 🥛: {d_coffee}ml\n"
+          f"Coffee ☕: {d_milk}g")
     try:
         d_profit = d_resources["profit"]
         print(f"Profit 💵: ${d_profit}")
@@ -86,7 +86,7 @@ def insert_coins():
     coins = quarters + dimes + nickles + pennies
     return coins
 
-def coffee_machine(actual_menu, actual_resources, art_logo):
+def coffee_machine(actual_menu, actual_resources):
     
     """ Run a coffee machine simulation. """
     
@@ -95,7 +95,6 @@ def coffee_machine(actual_menu, actual_resources, art_logo):
 
     while making_coffee:
         
-        print(art_logo[0])
         
         resources = actual_resources
             
