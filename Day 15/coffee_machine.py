@@ -121,4 +121,4 @@ def coffee_machine(actual_menu, actual_resources, art_logo):
         
                 
                 
-coffee_machine(MENU, resources, logo)
+coffee_machine(MENU, resources)
