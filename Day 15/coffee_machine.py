@@ -1,6 +1,7 @@
 from menu import MENU, resources
 
 
+
 def show_item_report(ingredients, price):
     
     """ Show the user the ingredients
@@ -10,17 +11,14 @@ def show_item_report(ingredients, price):
     coffee = ingredients["coffee"]
     cost = price
     
-    print(f"Water: {water}ml\n"
-          f"Coffee: {coffee}g\n"
-          f"Money: ${cost}")
+    print(f"Water 💧: {water}ml\n"
+          f"Coffee ☕: {coffee}g")
     try: 
         milk = ingredients["milk"]
-        print(f"Water: {water}ml\n"
-              f"Milk: {milk}ml\n"
-              f"Coffee: {coffee}g\n"
-              f"Money: ${cost}")
+        print(f"Milk 🥛: {milk}ml")
     except KeyError:
        pass
+    print(f"Money 💵: ${cost}")
 
 def show_machine_report(d_resources):
     
@@ -29,12 +27,12 @@ def show_machine_report(d_resources):
     d_water = d_resources["water"]
     d_coffee = d_resources["coffee"]
     d_milk = d_resources["milk"]
-    print(f"Water: {d_water}ml\n"
-          f"Milk: {d_coffee}g\n"
-          f"Coffee: {d_milk}ml")
+    print(f"Water 💧: {d_water}ml\n"
+          f"Milk 🥛: {d_coffee}g\n"
+          f"Coffee ☕: {d_milk}ml")
     try:
         d_profit = d_resources["profit"]
-        print(f"Profit: ${d_profit}")
+        print(f"Profit 💵: ${d_profit}")
     except KeyError:
         pass
     
@@ -49,17 +47,6 @@ def check_item(ingredients, d_resources):
             return False
         
     return True
-
-def deduct_ingredients(ingredients, d_resources):
-    
-    """ Deduct the required ingredients of a given item
-    from the machine's resources. """
-    
-    for ingredient in ingredients:
-        d_resources[ingredient] -= ingredients[ingredient]
-        
-    
-        
 
 def check_money(price, payment_amount, d_resources):
     
@@ -78,9 +65,18 @@ def check_money(price, payment_amount, d_resources):
         d_resources["profit"] += cost
         return True
     
+def deduct_ingredients(ingredients, d_resources):
+    
+    """ Deduct the required ingredients of a given item
+    from the machine's resources. """
+    
+    for ingredient in ingredients:
+        d_resources[ingredient] -= ingredients[ingredient]
+        
+    
     
 def insert_coins():
-    """ Insert coins into the machine."""
+    """ Return the amount of coins inserted into the machine."""
     print("Now insert the payment...")
     # quarters = $0.25, dimes = $0.10, nickles = $0.05, pennies = $0.01
     quarters = int(input("Type the amount of quarters: ")) * 0.25
@@ -90,19 +86,22 @@ def insert_coins():
     coins = quarters + dimes + nickles + pennies
     return coins
 
-def coffee_machine(actual_menu, actual_resources):
+def coffee_machine(actual_menu, actual_resources, art_logo):
     
     """ Run a coffee machine simulation. """
+    
     
     making_coffee = True
 
     while making_coffee:
         
+        print(art_logo[0])
+        
         resources = actual_resources
             
         choice = input("What would you like? (espresso/latte/cappuccino): \n").lower()
         if choice == "off":
-            print("Machine is off")
+            print("Machine is off ❌")
             making_coffee = False
         elif choice == "report":
             show_machine_report(resources)
@@ -117,9 +116,9 @@ def coffee_machine(actual_menu, actual_resources):
                     inserted_coins = insert_coins()
                     if check_money(cost, inserted_coins, resources):
                         deduct_ingredients(order_ingredients, resources)
-                        print(f"Here is your {choice}. Enjoy!")
+                        print(f"Here is your {choice} ☕. Enjoy!")
                 
         
                 
                 
-coffee_machine(MENU, resources)
+coffee_machine(MENU, resources, logo)
