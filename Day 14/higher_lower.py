@@ -2,6 +2,20 @@ import random
 from art import logo
 from data import instagram
 
+
+def format_account(profile, id):
+    acc_name = profile["name"]
+    acc_desc = profile["description"]
+    acc_cont = profile["country"]
+    acc_followers = profile["follower_count"]
+    
+    if id == 1:
+        print(f"\n{acc_name} a {acc_desc} from {acc_cont} that has {acc_followers} followers\n")
+    else:
+        print(f"\n{acc_name} a {acc_desc} from {acc_cont}\n")
+
+    
+
 def compare(profile1, profile2, higher):
     count1 = profile1["follower_count"]
     count2 = profile2["follower_count"]
@@ -38,8 +52,6 @@ def play_game(list, game_logo):
     while restart:
         
         counter = 0
-        index2 = 0
-        indexof2 = 0
         
         print(game_logo[0])
         
@@ -48,28 +60,18 @@ def play_game(list, game_logo):
             
             if counter == 0:
                random_profile1 = random.choice(list)
-                 
+            else:
+                random_profile1 = random_profile2     
                
             random_profile2 = random.choice(list)
-            indexof2 = list.index(random_profile2)
             
-            while random_profile1 == random_profile2 or indexof2 == index2:
+            while random_profile1 == random_profile2:
                 random_profile2 = random.choice(list)
-            
-            
-            acc1_name = random_profile1["name"]
-            acc1_desc = random_profile1["description"]
-            acc1_cont = random_profile1["country"]
-            
-            acc2_name = random_profile2["name"]
-            acc2_desc = random_profile2["description"]
-            acc2_cont = random_profile2["country"]
-            
-            
-            
-            print(f"\n{acc1_name} a {acc1_desc} from {acc1_cont}\n")
+                
+            format_account(random_profile1, 1)
             print(game_logo[1])
-            print(f"\n{acc2_name} a {acc2_desc} from {acc2_cont}\n")
+            format_account(random_profile2, 2)
+            
             
             try:
                 choice = int(input("\nChoose the one you think has the most followers on instagram!\nType '1' if you think it is the first one, type '2' if you think it is the second one: "))
@@ -79,15 +81,12 @@ def play_game(list, game_logo):
                 
             if not compare(random_profile1, random_profile2, choice):
                 break
-            
             else:
-                if choice == 2:
-                    random_profile1 = random_profile2
-                else:
-                    index2 = list.index(random_profile2)
                 counter += 1
-                print(f"\nYour score: {counter}\n")
             
+            print(f"\nYour score: {counter}\n")
+            
+        print(f"\nYour final score: {counter}\n")
             
         again = input("\nWanna try again? type (y/n): ").lower()
         if again == "n":
