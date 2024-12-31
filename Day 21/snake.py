@@ -4,33 +4,27 @@ UP = 90
 DOWN = 270
 LEFT = 180
 RIGHT = 0
-SIZE = 20
-STARTING_P = 3
+STARTING_P = [(0,0), (-20,0), (-40,0)]
 
 class Snake:
     def __init__(self):
         self.body = []
-        self.position = []
         self.create_snake()
         self.head = self.body[0]
         
     def create_snake(self):
-        for pos in range(STARTING_P):
+        for pos in STARTING_P:
             self.add_body_part(pos)
-            self.position.append(pos)
             
     def extend(self):
         #add a new part of the body to the snake
-        new_pos = self.position[-1] + 1
-        self.position.append(new_pos)
-        self.add_body_part(new_pos)
+        self.add_body_part(self.body[-1].position())
         
     def add_body_part(self, position):
         new_body = Turtle(shape="square")
         new_body.color("white")
         new_body.penup()
-        new_body.goto(position*-SIZE, 0)
-        new_body.speed(0)
+        new_body.goto(position)
         self.body.append(new_body)
             
             
