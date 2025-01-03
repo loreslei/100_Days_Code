@@ -3,7 +3,7 @@ from turtle import Turtle, Screen
 from random import *
 # Extract 6 colors from an image.
 rgb_colors = []
-colors = colorgram.extract("image.jpg", 8)
+colors = colorgram.extract("Day 18\image.jpg", 8)
 for color in colors:
     r = color.rgb.r
     g = color.rgb.g
