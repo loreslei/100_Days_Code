@@ -32,10 +32,10 @@ class Scoreboard(Turtle):
         
         
     def get_high_score(self):
-        with open("Day 24\data.txt") as file:
+        with open("Day 24/data.txt") as file:
             higher_score = file.read()
         return higher_score
     
     def set_high_score(self):
-        with open("Day 24\data.txt", mode="w") as file:
+        with open("Day 24/data.txt", mode="w") as file:
             file.write(f"{self.score}")
