@@ -7,7 +7,7 @@ file.close()
 
 
 with open("Day 24/my_file.txt", mode="w") as file:
-    file.write("Hehehe help")
+    file.write("Hehehe shit")
     
     
 with open("/Users/loren/Downloads/hello.txt") as file:
