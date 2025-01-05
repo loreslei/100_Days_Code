@@ -4,11 +4,11 @@
 #Save the letters in the folder "ReadyToSend".
     
 with open("Day 24/Mail Merge Project Start/Input/Names/invited_names.txt") as file:
-    names = file.readlines(64)
+    names = file.readlines()
     
     
 with open("Day 24\Mail Merge Project Start\Input\Letters\starting_letter.txt") as file:
-    letter = file.readlines(100)
+    letter = file.readlines()
   
 write_path = "Day 24/Mail Merge Project Start/Output/ReadyToSend"
 
