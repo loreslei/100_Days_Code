@@ -5,7 +5,7 @@ window.title("Mile to Km Converter")
 window.minsize(width=100, height=100)
 window.config(padx=100, pady=100)
 def calculate():
-    miles = int(input.get())
+    miles = float(input.get())
     km = round(miles * 1.609)
     km_label.config(text=f"{km}")
     
