@@ -20,10 +20,11 @@ FONT_CONFIG_BUTTON = ("Arial", 16, "bold")
 def reset():
     global reps
     window.after_cancel(timer)
+    reps = 0
+    timer = NONE
     timer_label.config(text="TIMER", fg=GREEN)
     check_label.config(text="")
     canvas.itemconfig(timer_text, text=f"00:00")
-    reps = 0
 # ---------------------------- TIMER MECHANISM ------------------------------- # 
 
 def start_timer():
@@ -32,7 +33,7 @@ def start_timer():
     work_sec = WORK_MIN * 60
     short_break_sec = SHORT_BREAK_MIN * 60
     long_break_sec = LONG_BREAK_MIN * 60
-    
+    bell()
     if reps%8 == 0:
        count_down(long_break_sec)
        timer_label.config(text="LONG BREAK", fg=GREEN) 
@@ -44,6 +45,12 @@ def start_timer():
         timer_label.config(text="BREAK",  fg=GREEN) 
 
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- # 
+
+# Bell function 
+def bell(): 
+    # call bell method 
+    window.bell() 
+  
 
 def count_down(count):
     global timer
