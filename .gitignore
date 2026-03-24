@@ -1,0 +1,5 @@
+.venv
+env
+save_pass.txt
+birthdays_filled.csv
+.vscode
