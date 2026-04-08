@@ -2,5 +2,9 @@
     "123": {
         "email": "example@gmail.com",
         "password": "123"
+    },
+    "pgAdmin": {
+        "email": "postgres",
+        "password": "2zr9Q3k##8SoXq!Dg+"
     }
 }
